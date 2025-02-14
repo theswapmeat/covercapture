@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+html,
+body {
+  font-family: "Outfit", Arial, sans-serif;
+  color: #133c4f;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 3em;
+}
+
+.insurance-with-insight {
+  color: #02131d;
+}
+
+@media (min-width: 300px) and (max-width: 864px) {
+  body {
+    background-color: rgba(78, 128, 93, 0.79);
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 864px) {
+  /* body {
+    background-color: green;
+  } */
+
+  h1 {
+    font-weight: 300;
+    font-size: 4em;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: cycleBackgrounds 3s infinite;
+  }
+
+  .background-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(236, 236, 236, 0.79);
+    pointer-events: none;
+  }
+}
+
+@keyframes cycleBackgrounds {
+  0% {
+    background-image: url("/assets/back_1.jpg");
+  }
+  33% {
+    background-image: url("/assets/back_2.jpg");
+  }
+  66% {
+    background-image: url("/assets/back_3.jpg");
+  }
+  100% {
+    background-image: url("/assets/back_1.jpg");
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  opacity: 0;
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Delays for multiple lines */
+.slide-up:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.slide-up:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.slide-up:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.slide-up:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.slide-up:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.container-fluid {
+  z-index: 100;
+  position: relative;
+  border: #02131d;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.row {
+  padding: 100px 20px 0px 20px;
+}

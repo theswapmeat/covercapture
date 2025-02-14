@@ -1,23 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" itemscope itemtype=" http://schema.org/WebPage">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CoverCapture - Insurance Insight</title>
-    <style>
-      body {
-        background-color: rgb(4, 22, 53);
-      }
-
-      .center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    </style>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon32x32.png" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <div class="center">
-      <img src="/assets/Capture.JPG" alt="CoverCapture" />
+    <div class="nav">
+      <img class="logo" src="/assets/logo.svg" height="100px" width="300px" />
+      <ul class="nav__links">
+        <li><a href="#">Login</a></li>
+      </ul>
     </div>
+    <div class="main">
+      <div><h1>Insurance with Insight</h1></div>
+
+      <div class="text-container">
+        <div class="text">
+          <h2>
+            Unlock the power of data-driven decision-making with advanced
+            analytics and reporting tools.
+          </h2>
+        </div>
+        <div class="text">
+          <h2>
+            Gain deep insights into risks, trends, and opportunities to stay
+            ahead.
+          </h2>
+        </div>
+        <div class="text">
+          <h2>
+            Make informed choices with confidence, backed by real-time data and
+            intelligent reporting.
+          </h2>
+        </div>
+      </div>
+      <button class="contact-button" onclick="openModal()">Contact Us</button>
+    </div>
+    <div class="modal" id="contactModal">
+      <h3>Contact Us</h3>
+      <form
+        action="mailto:your-email@example.com"
+        method="post"
+        enctype="text/plain"
+      >
+        <input type="text" name="Name" placeholder="Your Name" required />
+        <input type="text" name="Company" placeholder="Your Company" required />
+        <textarea name="Message">
+I want to know more about CoverCapture.</textarea
+        >
+        <button type="submit">Submit</button>
+      </form>
+      <button onclick="closeModal()">Close</button>
+    </div>
+    <script>
+      function openModal() {
+        document.getElementById("contactModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("contactModal").style.display = "none";
+      }
+    </script>
   </body>
 </html>
