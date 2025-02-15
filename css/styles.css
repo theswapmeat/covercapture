@@ -102,7 +102,7 @@ h2 {
   font-size: 1em;
   width: 150px;
   color: white;
-  background-color: #007bff;
+  background-color: rgba(1,142,217,255);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -171,7 +171,7 @@ button[type="submit"], #cancelButton {
   font-size: 1em;
   width: 100px;
   color: white;
-  background-color: #007bff;
+  background-color: rgba(1,142,217,255);
   border: none;
   border-radius: 5px;
   cursor: pointer;
