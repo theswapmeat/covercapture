@@ -5,17 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CoverCapture - Insurance Insight</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon32x32.png" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "MsCsS8EPsbOqORH7k",
+        });
+      })();
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("contactForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            // these IDs from the previous steps
+            emailjs.sendForm("service_30heloc", "template_rya2dcs", this).then(
+              () => {
+                console.log("SUCCESS!");
+                closeModal();
+                contactForm.reset()
+              },
+              (error) => {
+                console.log("FAILED...", error);
+              }
+            );
+          });
+      };
+    </script>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <div class="nav">
       <img class="logo" src="/assets/logo.svg" height="100px" width="300px" />
       <ul class="nav__links">
-        <li><a href="#">Login</a></li>
+        <!-- <li><a href="#">Login</a></li> -->
       </ul>
     </div>
     <div class="main">
-      <div><h1>Insurance with Insight</h1></div>
+      <div><h1>Insurance with Insight.</h1></div>
 
       <div class="text-container">
         <div class="text">
@@ -37,32 +68,69 @@
           </h2>
         </div>
       </div>
-      <button class="contact-button" onclick="openModal()">Contact Us</button>
+      <button class="contact-button" id="openModal">Contact Us</button>
+      <div class="overlay" id="overlay"></div>
     </div>
-    <div class="modal" id="contactModal">
-      <h3>Contact Us</h3>
-      <form
-        action="mailto:your-email@example.com"
-        method="post"
-        enctype="text/plain"
-      >
-        <input type="text" name="Name" placeholder="Your Name" required />
-        <input type="text" name="Company" placeholder="Your Company" required />
-        <textarea name="Message">
+
+    <div class="modal" id="modal">
+      <form id="contactForm">
+        <div class="name-row">
+          <div class="input-group">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter your first name"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter your last name"
+              required
+            />
+          </div>
+        </div>
+
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="companyName">Company Name</label>
+        <input
+          type="text"
+          id="companyName"
+          name="companyName"
+          placeholder="Enter your company name"
+          required
+        />
+
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="I want to know more about CoverCapture."
+          required
+        >
 I want to know more about CoverCapture.</textarea
         >
-        <button type="submit">Submit</button>
-      </form>
-      <button onclick="closeModal()">Close</button>
-    </div>
-    <script>
-      function openModal() {
-        document.getElementById("contactModal").style.display = "block";
-      }
 
-      function closeModal() {
-        document.getElementById("contactModal").style.display = "none";
-      }
-    </script>
+        <div class="button-container">
+          <button type="submit">Submit</button>
+          <button type="button" id="cancelButton">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <script src="/scripts/modal.js"></script>
   </body>
 </html>
