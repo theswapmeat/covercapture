@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CoverCapture | Insurance Workstream Automation",
+  title: "CoverCapture | Powering Modern Resilience.",
   description:
     "Modernizing commercial insurance through data-driven automation.",
   icons: {
