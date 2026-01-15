@@ -1,9 +1,4 @@
-/* globals.css */
-
 @import "tailwindcss";
-
-/* ✅ Make `dark:` respond to the `.dark` class toggle */
-@custom-variant dark (&:where(.dark, .dark *));
 
 @source "./**/*.{js,ts,jsx,tsx,mdx}";
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
@@ -42,14 +37,14 @@
 }
 
 /* --------------------------------------------------
-   Light theme (default)
+   Light theme (only)
 -------------------------------------------------- */
 :root {
   --bg-color: #ffffff;
 
-  /* ✅ Semantic text colors */
-  --text-title: rgb(19, 60, 79); /* strong navy */
-  --text-body: rgb(19, 60, 79); /* default text */
+  /* Semantic text colors */
+  --text-title: rgb(19, 60, 79);
+  --text-body: rgb(19, 60, 79);
   --text-subtitle: rgba(19, 60, 79, 0.65);
   --text-muted: rgba(19, 60, 79, 0.55);
   --text-disabled: rgba(19, 60, 79, 0.35);
@@ -65,78 +60,13 @@
   --stat-amber: #fffbeb;
 
   /* Status colors */
-  --danger: #dc2626; /* red-600-ish */
-  --danger-foreground: #991b1b; /* red-800-ish */
-  --danger-muted: #fef2f2; /* red-50-ish */
+  --danger: #dc2626;
+  --danger-foreground: #991b1b;
+  --danger-muted: #fef2f2;
 
-  --warning: #d97706; /* amber-600-ish */
-  --warning-foreground: #92400e; /* amber-800-ish */
-  --warning-muted: #fffbeb; /* amber-50-ish */
-}
-
-/* --------------------------------------------------
-   Dark theme (system preference)
--------------------------------------------------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #0b1120;
-
-    /* ✅ Semantic text colors */
-    --text-title: #f8fafc;
-    --text-body: #f1f5f9;
-    --text-subtitle: rgba(241, 245, 249, 0.7);
-    --text-muted: rgba(241, 245, 249, 0.6);
-    --text-disabled: rgba(241, 245, 249, 0.35);
-
-    --border: #1e293b;
-    --border-muted: #1e293b;
-    --surface-muted: #0f172a;
-
-    --stat-blue: #172554;
-    --stat-green: #064e3b;
-    --stat-purple: #2e1065;
-    --stat-amber: #451a03;
-
-    /* Status colors (dark) */
-    --danger: #f87171; /* softer red */
-    --danger-foreground: #fecaca; /* light text */
-    --danger-muted: rgba(248, 113, 113, 0.12);
-
-    --warning: #fbbf24; /* amber */
-    --warning-foreground: #fde68a; /* light amber text */
-    --warning-muted: rgba(251, 191, 36, 0.12);
-  }
-}
-
-/* --------------------------------------------------
-   Dark theme (class toggle)
--------------------------------------------------- */
-.dark {
-  --bg-color: #0b1120;
-
-  --text-title: #f8fafc;
-  --text-body: #f1f5f9;
-  --text-subtitle: rgba(241, 245, 249, 0.7);
-  --text-muted: rgba(241, 245, 249, 0.6);
-  --text-disabled: rgba(241, 245, 249, 0.35);
-
-  --border: #1e293b;
-  --border-muted: #1e293b;
-  --surface-muted: #0f172a;
-
-  --stat-blue: #172554;
-  --stat-green: #064e3b;
-  --stat-purple: #2e1065;
-  --stat-amber: #451a03;
-
-  /* Status colors (dark) */
-  --danger: #f87171; /* softer red */
-  --danger-foreground: #fecaca; /* light text */
-  --danger-muted: rgba(248, 113, 113, 0.12);
-
-  --warning: #fbbf24; /* amber */
-  --warning-foreground: #fde68a; /* light amber text */
-  --warning-muted: rgba(251, 191, 36, 0.12);
+  --warning: #d97706;
+  --warning-foreground: #92400e;
+  --warning-muted: #fffbeb;
 }
 
 /* --------------------------------------------------
@@ -176,9 +106,6 @@ input[type="number"] {
     appearance: textfield;
   }
 
-  /* ------------------------------
-     Semantic text helpers
-  ------------------------------ */
   .text-danger {
     color: var(--danger);
   }
@@ -192,14 +119,11 @@ input[type="number"] {
     color: var(--warning-foreground);
   }
 
-  /* ------------------------------
-     Alerts
-  ------------------------------ */
   .alert {
-    border-radius: 0.75rem; /* rounded-xl */
+    border-radius: 0.75rem;
     border: 1px solid;
     padding: 0.75rem 1rem;
-    font-size: 0.875rem; /* text-sm */
+    font-size: 0.875rem;
     line-height: 1.25rem;
   }
   .alert-danger {
@@ -213,18 +137,14 @@ input[type="number"] {
     color: var(--warning-foreground);
   }
 
-  /* ------------------------------
-     Form validation
-  ------------------------------ */
   .field-error {
-    margin-top: 0.25rem; /* mt-1 */
-    font-size: 0.75rem; /* text-xs */
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
     line-height: 1rem;
-    font-weight: 600; /* semibold */
+    font-weight: 600;
     color: var(--danger);
   }
 
-  /* ✅ Make invalid borders override Tailwind border classes reliably */
   input.control-invalid,
   select.control-invalid,
   textarea.control-invalid {
