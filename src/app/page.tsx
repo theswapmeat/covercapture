@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <MarketingBackground>
-      <div className="flex min-h-[100dvh] flex-col overflow-hidden">
+      <div className="flex min-h-[100dvh] flex-col">
         <header className="flex items-center px-6 py-6 sm:px-20 sm:py-10">
           <Image
             src="/brand/logo.png"
@@ -36,50 +36,63 @@ export default function Home() {
           />
         </header>
 
-        <main className="flex flex-1 flex-col justify-center px-6 pb-8 sm:px-20 sm:pb-24">
+        {/* ✅ Key fix: no vertical-centering on mobile (prevents bounce) */}
+        <main className="flex flex-1 flex-col justify-start px-6 pt-10 pb-8 sm:justify-center sm:px-20 sm:pt-0 sm:pb-24">
           <motion.section
             initial="hidden"
             animate="show"
-            variants={{
-              show: { transition: { staggerChildren: 0.15 } },
-            }}
-            className="max-w-5xl space-y-6 sm:space-y-8"
+            variants={{ show: { transition: { staggerChildren: 0.15 } } }}
+            className="max-w-5xl"
           >
-            <motion.h1
-              variants={FADE_UP}
-              className="text-4xl font-bold tracking-tight text-foreground sm:text-7xl"
+            {/* HEADLINE BOX: 
+        Forces a height of 180px on small screens. 
+        This is the "Solid Thick Red Border" you requested. */}
+            <div
+              style={{
+                minHeight: "90px",
+                marginBottom: "20px",
+                display: "block",
+              }}
+              className="sm:min-h-0 sm:border-none sm:mb-8"
             >
-              Modernize your <br className="hidden sm:block" />
-              <HeadlineRotator />
-            </motion.h1>
-
-            <motion.p
-              variants={FADE_UP}
-              className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-2xl"
-            >
-              Our platform simplifies the complex lifecycle of commercial
-              coverage, transforming fragmented insurance workstreams into a
-              unified, data-driven engine for business resilience.
-            </motion.p>
-
-            <motion.div
-              variants={FADE_UP}
-              className="flex flex-col gap-3 pt-4 sm:flex-row sm:gap-4 sm:pt-6"
-            >
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => setIsContactOpen(true)}
-                className="flex h-12 items-center justify-center rounded-xl bg-primary px-8 text-base font-bold text-primary-foreground transition-all"
+              <motion.h1
+                variants={FADE_UP}
+                className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-7xl"
               >
-                Contact
-              </motion.button>
-            </motion.div>
+                Modernize your <br className="hidden sm:block" />
+                <HeadlineRotator />
+              </motion.h1>
+            </div>
+
+            {/* DESCRIPTION BOX:
+        This is now in a completely separate block so it cannot move. */}
+            <div className="relative block">
+              <motion.p
+                variants={FADE_UP}
+                className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-2xl"
+              >
+                Our platform simplifies the complex lifecycle of commercial
+                coverage, transforming fragmented insurance workstreams into a
+                unified, data-driven engine for business resilience.
+              </motion.p>
+
+              <motion.div variants={FADE_UP} className="pt-8">
+                <button
+                  onClick={() => setIsContactOpen(true)}
+                  className="h-12 bg-primary px-8 rounded-xl font-bold text-white"
+                >
+                  Contact
+                </button>
+              </motion.div>
+            </div>
           </motion.section>
         </main>
       </div>
 
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </MarketingBackground>
   );
 }

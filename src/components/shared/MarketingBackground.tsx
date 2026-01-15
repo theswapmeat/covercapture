@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
 
 export function MarketingBackground({
   children,
@@ -9,26 +8,31 @@ export function MarketingBackground({
   image?: string;
 }) {
   return (
-    <div className="relative min-h-[100dvh] overflow-hidden bg-background">
-      {/* Background image (washed) */}
+    // 'isolate' creates a new stacking context so z-0 inside doesn't fight with z-index outside
+    <div className="relative min-h-[100dvh] w-full bg-white isolate overflow-x-hidden">
+      
+      {/* Layer 0: The Image (Fixed so it doesn't move on scroll) */}
       <div
-        className={cn(
-          "absolute inset-0 bg-cover bg-center opacity-80",
-          "[filter:brightness(1.15)_saturate(0.9)]"
-        )}
-        style={{ backgroundImage: `url(${image})` }}
+        className="fixed inset-0 -z-20 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${image})`,
+          filter: 'brightness(1.15) saturate(0.9)',
+          opacity: 0.8
+        }}
       />
 
-      {/* Light wash */}
+      {/* Layer 1: The Gradient Wash */}
       <div
-        className={cn(
-          "absolute inset-0",
-          "bg-[linear-gradient(45deg,rgba(255,255,255,0.90)_0%,rgba(250,250,252,0.75)_45%,rgba(255,255,255,0.88)_100%)]"
-        )}
+        className="fixed inset-0 -z-10"
+        style={{
+          background: 'linear-gradient(45deg, rgba(255,255,255,0.90) 0%, rgba(250,250,252,0.75) 45%, rgba(255,255,255,0.88) 100%)'
+        }}
       />
 
-      {/* Page content */}
-      <div className="relative z-10 flex min-h-[100dvh] flex-col">{children}</div>
+      {/* Layer 2: The Actual Content */}
+      <div className="relative z-10 min-h-[100dvh] flex flex-col">
+        {children}
+      </div>
     </div>
   );
 }

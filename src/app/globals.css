@@ -46,7 +46,7 @@
   --text-title: rgb(19, 60, 79);
   --text-body: rgb(19, 60, 79);
   --text-subtitle: rgba(19, 60, 79, 0.65);
-  --text-muted: rgba(19, 60, 79, 0.55);
+  --text-muted: rgba(5, 27, 37, 0.55);
   --text-disabled: rgba(19, 60, 79, 0.35);
 
   --border: #e2e8f0;
